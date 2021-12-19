@@ -1,0 +1,2 @@
+Jatin Dhall.Brazil consistently has more cases than India.Brazil consistently has more deaths than India.With spikes in number of cases, we can see spikes in number of deaths, which shows that they are correlated.There is no linear increase or decrease in the number of deaths for brazil and india.We can see sudden spikes in number of cases from the graphs 
+
