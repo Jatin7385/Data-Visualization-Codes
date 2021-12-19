@@ -1,0 +1,64 @@
+---
+title: "Flex Dashboard Basics"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+
+mtcars
+attach(mtcars)
+library(ggplot2)
+```
+
+## Column {data-width=650}
+
+### Chart A
+
+```{r}
+qplot(
+  cyl,
+  geom = "bar",
+  fill = I("blue"),
+  colour = I("red"),
+  xlab = "Cylinders",
+  ylab = "Number of Vehicles",
+  main = "Cylinders in mtcars Dataset")
+```
+
+## Column {data-width=350}
+
+
+### Chart B
+
+```{r}
+qplot(
+  hp,
+  geom = "histogram",
+  binwidth = 25,#The number range is broken into bins of 25
+  color = I("black"),#Color of the borders
+  xlab = "HorsePower",#Xlabel
+  ylab = "Number of Cars",#Ylabel
+  alpha = I(0),#Removes the fill color completely
+  main = "Histogram")#Title of the histogram
+```
+
+### Chart C
+
+```{r}
+barp<-ggplot(mtcars,aes(x=1,y=sort(carb),fill=sort(carb)))+geom_bar(stat="identity")#To create the stacked #barplot
+barp<-barp + coord_polar(theta="y")#Converts the #stacked bar chart to piechart
+barp<-barp + theme(
+  axis.line = element_blank(),
+  axis.text.x = element_blank(),
+  axis.text.y = element_blank(),
+  axis.ticks = element_blank(),
+  axis.title.y = element_blank(),
+  panel.background = element_blank())+
+  labs(y = "Carburetors")
+print(barp)
+```
+
